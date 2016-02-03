@@ -64,7 +64,6 @@ ServoFrame dance13_frm[8];
 ServoFrame dance14_frm[5];
 ServoFrame home_frm[1];
 
-//----------------------------------------//
 char Serial1_Message[20];
 bool renew_bt = true;
 ros::NodeHandle  nh;
@@ -75,7 +74,6 @@ void messageCb( const std_msgs::String& cmsg)
 ros::Subscriber<std_msgs::String> sub("chatter", &messageCb );
 File myFile ;
 short buffer[1024];
-//----------------------------------------//
 
 namespace END
 {
@@ -235,7 +233,6 @@ void closeTriggers()
 }
 void updateTrigger()
 {
-//----------------------------------------//
   if(isBlocked()) return;
   if(strcmp(Serial1_Message,"HOME") ==0) {
 	  _curr_motion = _HOME;
@@ -289,7 +286,6 @@ void updateTrigger()
   else if(strcmp(Serial1_Message,"DANCE14") ==0) {_curr_motion = _DANCE14;}
   else if(strcmp(Serial1_Message,"DANCEALL") ==0) {_curr_motion = _DANCEALL;}
   else { _curr_motion = _NONE; }
-//----------------------------------------//
   if(_last_motion != _curr_motion && _curr_motion != _NONE)
   {
     closeTriggers();
@@ -2090,19 +2086,18 @@ void homeUpdate()
 }
 void setup()
 {
-//----------------------------------------//
-  io_outpb(0x0A12,0x00);
-  io_outpb(0x0A13,0x00);
-  io_outpb(0x0A20,0x02);
-  io_outpb(0x0A22,0x01);
+  io_outpb(0x0A12,0x00); //enable COM1 TX pin
+  io_outpb(0x0A13,0x00); //enable COM1 RX pin
+  io_outpb(0x0A20,0x02); //SPICS to RX
+  io_outpb(0x0A22,0x01); //SPIDI to DX
   nh.getHardware()->setESP8266(Serial1, 115200);
   nh.getHardware()->setWiFi("RoBoardGod", "00000000");
   nh.initNode("10.0.0.1");	//ROS-Host IP address
   nh.subscribe(sub);
-  pinMode(13, OUTPUT);
+  pinMode(13, OUTPUT);	//Skarner's eyes LED
+  digitalWrite(13, HIGH);   // turn the LED on (HIGH is the voltage level)
   Audio.begin(88200, 100);
-   srand(time(NULL));
-//----------------------------------------//
+  srand(time(NULL));
 
   myservo2.attach(2);
   myservo3.attach(3);
@@ -5645,7 +5640,6 @@ void loop()
   dance13Update();
   dance14Update();
   homeUpdate();
-//----------------------------------------//
   nh.spinOnce();
   
 	if (myFile.available()) {
@@ -5660,6 +5654,4 @@ void loop()
 		Audio.write(buffer, 1024);
 		myFile.close();
 	}
-  digitalWrite(13, HIGH);   // turn the LED on (HIGH is the voltage level)
-//----------------------------------------//
 }

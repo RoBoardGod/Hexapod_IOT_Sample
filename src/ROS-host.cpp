@@ -1,13 +1,10 @@
-#include <ros/ros.h>
-#include <iostream>
-#include <sstream>
-#include <fstream>
-#include <string.h>
-#include <termios.h>
-#include <irrKlang.h>
-#include "std_msgs/String.h"
-#include <unistd.h>
-unsigned short act = 35;
+#include <ros/ros.h>	//ROS: http://www.ros.org/
+#include <irrKlang.h>	//irrKlang: http://www.ambiera.com/irrklang/
+#include <termios.h>	//for getch()
+#include <std_msgs/String.h>
+
+#define act 35
+
 long cmd_time[act] = {
 		0,
 		1920,
@@ -82,10 +79,6 @@ char* cmd[act] = {
 		"DANCE14",
 		"END"
 };
-void chatterCallback(const std_msgs::String::ConstPtr& msg)
-{	
-	ROS_INFO("INFO: %s",msg.data());
-}
 char getch()
 {
 	fd_set set;
@@ -126,9 +119,7 @@ int main(int argc, char **argv)
 	if (!engine) return 1; // could not start engine
 	ros::init(argc, argv, "listener");
 	ros::NodeHandle n;
-	ros::NodeHandle n2;
 	ros::Publisher chatter_pub = n.advertise<std_msgs::String>("chatter", 1000);
-	ros::Subscriber sub = n2.subscribe("chatter2", 1000 ,chatterCallback);
 	ros::Rate loop_rate(10);
 	std_msgs::String msg;
 	char str[2] = "\0";
@@ -161,19 +152,23 @@ int main(int argc, char **argv)
 			case 'j':
 				msg.data = "ATKL";
 				chatter_pub.publish(msg);
-				goto case 's';
+				msg.data = "HOME";
+				chatter_pub.publish(msg);
 			case 'k':
 				msg.data = "ATKR";
 				chatter_pub.publish(msg);
-				goto case 's';
+				msg.data = "HOME";
+				chatter_pub.publish(msg);
 			case 'l':
 				msg.data = "ATKC";
 				chatter_pub.publish(msg);
-				goto case 's';
+				msg.data = "HOME";
+				chatter_pub.publish(msg);
 			case ';':
 				msg.data = "LAUGH";
 				chatter_pub.publish(msg);
-				goto case 's';
+				msg.data = "HOME";
+				chatter_pub.publish(msg);
 			case 'w':
 				msg.data = "FORWARD";
 				chatter_pub.publish(msg);

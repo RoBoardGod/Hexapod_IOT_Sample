@@ -23,9 +23,7 @@ int _curr_motion = _NONE;
 bool internal_trigger[23] = {0};
 bool external_trigger[23] = {0};
 
-//----------------------------------------//
-ServoOffset myoffs("a:\\86offset.txt");
-//----------------------------------------//
+ServoOffset myoffs("a:\\86offset.txt");	//You can move 86offset file into 86Duino Disk (A:), it will make all 86Hexapod has same action
 
 ServoFrame _86ME_HOME;
 
@@ -53,7 +51,7 @@ ServoFrame dance13_frm[14];
 ServoFrame dance14_frm[4];
 ServoFrame danceALL_frm[0];
 
-//----------------------------------------//
+
 char Serial1_Message[20];
 bool renew_bt = true;
 ros::NodeHandle  nh;
@@ -62,8 +60,6 @@ void messageCb( const std_msgs::String& cmsg)
 	strcpy(Serial1_Message,(char*)cmsg.data);
 }
 ros::Subscriber<std_msgs::String> sub("chatter", &messageCb );
-//----------------------------------------//
-
 
 namespace END
 {
@@ -228,7 +224,6 @@ void closeTriggers()
 }
 void updateTrigger()
 {
-//----------------------------------------//
   if(isBlocked()) return;
   if(title_title == 1) {_curr_motion = _TITLE; title_title--;}
   else if(strcmp(Serial1_Message,"END") ==0) {_curr_motion = _END;}
@@ -252,7 +247,6 @@ void updateTrigger()
   else if(strcmp(Serial1_Message,"DANCE14") ==0) {_curr_motion = _DANCE14;}
   else if(strcmp(Serial1_Message,"DANCEALL") ==0) {_curr_motion = _DANCEALL;}
   else { _curr_motion = _NONE; }
-//----------------------------------------//
   if(_last_motion != _curr_motion && _curr_motion != _NONE)
   {
     closeTriggers();
@@ -2106,16 +2100,15 @@ void danceALLUpdate()
 }
 void setup()
 {
-//----------------------------------------//
-  io_outpb(0x0A12,0x00);
-  io_outpb(0x0A13,0x00);
-  io_outpb(0x0A20,0x02);
-  io_outpb(0x0A22,0x01);
+  io_outpb(0x0A12,0x00); //enable COM1 TX pin
+  io_outpb(0x0A13,0x00); //enable COM1 RX pin
+  io_outpb(0x0A20,0x02); //SPICS to RX
+  io_outpb(0x0A22,0x01); //SPIDI to DX
   nh.getHardware()->setESP8266(Serial1, 115200);
   nh.getHardware()->setWiFi("RoBoardGod", "00000000");
   nh.initNode("10.0.0.1");	//ROS-Host IP address
   nh.subscribe(sub);
-#ifdef __86DUINO_ZERO
+#ifdef __86DUINO_ZERO	//Choose your correct 86Duino version when you upload
   myservo2.attach(2);
   myservo3.attach(3);
   myservo4.attach(4);
@@ -2143,7 +2136,6 @@ void setup()
   myservo12.attach(26);
   myservo13.attach(25);
 #endif
-//----------------------------------------//
 
 
   END_frm[0].positions[0] = 1500;
@@ -4035,7 +4027,5 @@ void loop()
   dance13Update();
   dance14Update();
   danceALLUpdate();
-//----------------------------------------//
   nh.spinOnce();
-//----------------------------------------//
 }
