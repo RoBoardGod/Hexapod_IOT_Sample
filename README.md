@@ -9,35 +9,36 @@
 //                                                                        //
 //                                       http://roboardgod.blogspot.tw/   //
 //========================================================================//
-Skarner &amp; 86Hexapod IOT Sample use 86Duino
+Skarner & 86Hexapod dance project
 
 
 
 -------------
 I. Robot list
 -------------
-* 86Hexapod: https://github.com/roboard/86Hexapod
-* Skarner: https://github.com/RoBoardGod/Robot-Skarner
+# 86Hexapod: https://github.com/roboard/86Hexapod
+# Skarner: https://github.com/RoBoardGod/Robot-Skarner
 
 
 
 -------------
 II. File list
 -------------
-> \86ME_Projects
-	> 86Hexapod_using_86Duino_Zero.rbm
+# \86ME_Projects
+	## 86Hexapod_using_86Duino_Zero.rbm
 		-86ME Project for 86Hexapod on 86Duino Zero.
-	> 86Hexapod_using_86Duino_One.rbm
+	## 86Hexapod_using_86Duino_One.rbm
 		-86ME Project for 86Hexapod on 86Duino One.
-	> Skarner_using_86Duino_One.rbm
+	## Skarner_using_86Duino_One.rbm
 		-86ME Project for Skarner on 86Duino One.
-> \src
-	> \Robots
-		> 86Hexapod.ino
+# \src
+	## \Robots
+		### 86Hexapod.ino
 			-86Hexapod's synchronization control code for ROS.
-		> Skarner.ino
+		### Skarner.ino
 			-Skarner's synchronization control code for ROS.
-	> ROS-host.cpp
-		-Control code for synchronization control robots on ROS.
+	## \Host
+		### ROS-host.cpp
+			-Control code for synchronization control robots on ROS.
 		
 
