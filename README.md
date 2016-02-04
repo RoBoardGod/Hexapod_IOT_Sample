@@ -1,4 +1,4 @@
-**Skarner & 86Hexapod dance project**
+**Skarner & 86Hexapod dance project**<br>
 http://roboardgod.blogspot.tw/
 <br>
 <br>
@@ -14,22 +14,22 @@ http://roboardgod.blogspot.tw/
 -------------
 #II. File list
 -------------
-1.**\\86ME\_Projects**
-1.86Hexapod\_using\_86Duino\_Zero.rbm
-+86ME Project for 86Hexapod on 86Duino Zero.
-2.86Hexapod\_using\_86Duino\_One.rbm
-+86ME Project for 86Hexapod on 86Duino One.
-3.Skarner\_using\_86Duino\_One.rbm
-+86ME Project for Skarner on 86Duino One.
-2.**\\src**
-1.**\\Robots**
-1.86Hexapod.ino
-+86Hexapod's synchronization control code for ROS.
-2.Skarner.ino
-+Skarner's synchronization control code for ROS.
-2.**\\Host**
-1.ROS-host.cpp
-+Control code for synchronization control robots on ROS.
+1. **\\86ME\_Projects**
+1. 86Hexapod\_using\_86Duino\_Zero.rbm
++ 86ME Project for 86Hexapod on 86Duino Zero.
+2. 86Hexapod\_using\_86Duino\_One.rbm
++ 86ME Project for 86Hexapod on 86Duino One.
+3. Skarner\_using\_86Duino\_One.rbm
++ 86ME Project for Skarner on 86Duino One.
+2. **\\src**
+1. **\\Robots**
+1. 86Hexapod.ino
++ 86Hexapod's synchronization control code for ROS.
+2. Skarner.ino
++ Skarner's synchronization control code for ROS.
+2. **\\Host**
+1. ROS-host.cpp
++ Control code for synchronization control robots on ROS.
 <br>
 <br>
 <br>
