@@ -15,11 +15,11 @@ My blog: http://roboardgod.blogspot.tw/
 ##II. File list
 -------------
 	1. \86ME_Projects
-		1. 86Hexapod\_using\_86Duino\_Zero.rbm
+		1. 86Hexapod_using_86Duino_Zero.rbm
 			+ 86ME Project for 86Hexapod on 86Duino Zero.
-		2. 86Hexapod\_using\_86Duino\_One.rbm
+		2. 86Hexapod_using_86Duino_One.rbm
 			+ 86ME Project for 86Hexapod on 86Duino One.
-		3. Skarner\_using\_86Duino\_One.rbm
+		3. Skarner_using_86Duino_One.rbm
 			+ 86ME Project for Skarner on 86Duino One.
 	2. \src
 		1. \Robots
