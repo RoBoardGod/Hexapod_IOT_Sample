@@ -2100,8 +2100,8 @@ void danceALLUpdate()
 }
 void setup()
 {
-  io_outpb(0x0A12,0x00); //enable COM1 TX pin
-  io_outpb(0x0A13,0x00); //enable COM1 RX pin
+  io_outpb(0x0A12,0x00); //disable COM1 TX pin
+  io_outpb(0x0A13,0x00); //disable COM1 RX pin
   io_outpb(0x0A20,0x02); //SPICS to RX
   io_outpb(0x0A22,0x01); //SPIDI to DX
   nh.getHardware()->setESP8266(Serial1, 115200);
